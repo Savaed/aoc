@@ -2,16 +2,12 @@ from pathlib import Path
 
 
 def get_first_basement_position(instruction: str) -> int | None:
-    up = 0
-    down = 0
+    floor = 0
 
     for position, direction in enumerate(instruction, 1):
-        if direction == "(":
-            up += 1
-        else:
-            down += 1
+        floor = floor + 1 if direction == "(" else floor - 1
 
-        if up - down < 0:
+        if floor == -1:
             return position
 
     return None
