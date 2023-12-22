@@ -1,7 +1,9 @@
-import requests
+import argparse
 import json
 from pathlib import Path
-import argparse
+
+import requests
+
 
 CONFIG_PATH = Path(__file__).parent / "settings.json"
 
@@ -16,9 +18,7 @@ def main() -> int:
 
     url = f"https://adventofcode.com/{args.year}/day/{args.day}/input"
     response = requests.get(url, cookies=cfg["cookies"])
-    output: Path = (
-        Path(__file__).parent / str(args.year) / f"{args.day:02}" / "input.txt"
-    )
+    output: Path = Path(__file__).parent / str(args.year) / f"{args.day:02}" / "input.txt"
     output.touch()
     output.write_text(response.text)
     return 0
