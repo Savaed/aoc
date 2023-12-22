@@ -1,4 +1,5 @@
 .venv
 .activate.sh
 .deactivate.sh
+input.txt
 settings.json
